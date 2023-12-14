@@ -1,175 +1,161 @@
 "use client";
-
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
-const registration = () => {
+const Registration = () => {
   const router = useRouter();
-  const [fullName, setFullName] = useState<string>("");
-  const [userName, setUserName] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [confirmPassword, setConfirmPassword] = useState<string>("");
-  const [address, setAddress] = useState<string>("");
-  const [companyName, setCompanyName] = useState<string>("");
-  const [phoneNumber, setPhoneNumber] = useState<string>("");
-  const [city, setCity] = useState<string>("");
-  const [country, setCountry] = useState<string>("");
-  const validationRegistrationform = () => {
+  const [fullName, setFullName] = useState("");
+  const [userName, setUserName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [address, setAddress] = useState("");
+  const [companyName, setCompanyName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [city, setCity] = useState("");
+  const [country, setCountry] = useState("");
+
+  const validationRegistrationForm = () => {
     if (!fullName || !password || !email) {
       return false;
     }
     return true;
   };
-  const handleSignUp = () => {
-    if (validationRegistrationform()) {
-      alert("registration successfull");
+
+  const handleSignUp = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    if (validationRegistrationForm()) {
+      alert("Registration successful");
     }
   };
 
   return (
-    <div>
-      <h1>Sign Up</h1>
-      <form onSubmit={handleSignUp}>
-        <label>
-          fullName:
+    <div className="container mx-auto mt-10">
+      <h1 className="text-2xl font-bold mb-6">Sign Up</h1>
+      <form onSubmit={handleSignUp} className="max-w-md mx-auto">
+        <label className="block mb-2">
+          Full Name:
           <input
             type="text"
-            placeholder="Enter your fullName "
+            placeholder="Enter your full name"
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
+            className="w-full border border-gray-300 p-2 rounded"
             required
           />
         </label>
-        <br />
-        {/* ///////////// */}
-        <label>
-          userName:
+        <label className="block mb-2">
+          User Name:
           <input
             type="text"
-            placeholder="Enter your userName "
+            placeholder="Enter your user name"
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
+            className="w-full border border-gray-300 p-2 rounded"
             required
           />
         </label>
-        <br />
-        {/* ///////////// */}
-        <label>
-          address:
+        <label className="block mb-2">
+          Address:
           <input
             type="text"
-            placeholder="Enter your address "
+            placeholder="Enter your address"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
+            className="w-full border border-gray-300 p-2 rounded"
             required
           />
         </label>
-        <br />
-        {/* ///////////// */}
-        <label>
-          companyName:
+        <label className="block mb-2">
+          Company Name:
           <input
             type="text"
-            placeholder="Enter your companyName "
+            placeholder="Enter your company name"
             value={companyName}
             onChange={(e) => setCompanyName(e.target.value)}
+            className="w-full border border-gray-300 p-2 rounded"
             required
           />
         </label>
-        <br />
-        {/* ///////////// */}
-        <label>
-          phoneNumber:
+        <label className="block mb-2">
+          Phone Number:
           <input
             type="number"
-            placeholder="Enter your phoneNumber "
+            placeholder="Enter your phone number"
             value={phoneNumber}
             onChange={(e) => setPhoneNumber(e.target.value)}
+            className="w-full border border-gray-300 p-2 rounded"
             required
           />
         </label>
-        <br />
-        {/* ///////////// */}
-        <label>
-          city:
+        <label className="block mb-2">
+          City:
           <input
             type="text"
-            placeholder="Enter your city "
+            placeholder="Enter your city"
             value={city}
             onChange={(e) => setCity(e.target.value)}
+            className="w-full border border-gray-300 p-2 rounded"
             required
           />
         </label>
-        <br />
-        {/* ///////////// */}
-        <label>
-          fullName:
+        <label className="block mb-2">
+          Country:
           <input
             type="text"
-            placeholder="Enter your fullName "
-            value={fullName}
-            onChange={(e) => setFullName(e.target.value)}
-            required
-          />
-        </label>
-        <br />
-        {/* ///////////// */}
-        <label>
-          country:
-          <input
-            type="text"
-            placeholder="Enter your country "
+            placeholder="Enter your country"
             value={country}
             onChange={(e) => setCountry(e.target.value)}
+            className="w-full border border-gray-300 p-2 rounded"
             required
           />
         </label>
-        <br />
-        {/* ///////////// */}
-
-        <br />
-        <label>
+        <label className="block mb-2">
           Email:
           <input
             type="email"
-            placeholder="Enter your email addrerss"
+            placeholder="Enter your email address"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            className="w-full border border-gray-300 p-2 rounded"
             required
           />
         </label>
-        <br />
-        <label>
+        <label className="block mb-2">
           Password:
           <input
             type="password"
             placeholder="Enter your password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            className="w-full border border-gray-300 p-2 rounded"
             required
           />
         </label>
-        <br />
-        <label>
-          confirmPassword:
+        <label className="block mb-2">
+          Confirm Password:
           <input
-            type="text"
-            placeholder="Enter your confirmPassword "
+            type="password"
+            placeholder="Confirm your password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
+            className="w-full border border-gray-300 p-2 rounded"
             required
           />
         </label>
-        {/* ///////////// */}
-        <br />
-        <button type="submit">Sign Up</button>
-        <h1>
-          already have an account? : <Link href="/login">Login</Link>
+        <button
+          className="bg-blue-400 text-white py-2 px-4 md:px-20 rounded w-full mt-4 hover:bg-blue-600"
+          type="submit"
+        >
+          Sign Up
+        </button>
+        <h1 className="mt-4">
+          Already have an account? : <Link href="/login">Login</Link>
         </h1>
       </form>
     </div>
   );
 };
-export default registration;
+
+export default Registration;
